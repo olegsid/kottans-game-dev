@@ -32,17 +32,19 @@ function main() {
 
 function computerMovement() {
 	let paddle2YCenter = paddle2Y + PADDLE_HEIGHT / 2;
+	let paddle2deltaY =
+		Math.abs(ballSpeedY) > 6 ? 6 : Math.abs(ballSpeedY * 0.99);
 	if (paddle2YCenter < ballY - 35) {
-		paddle2Y = paddle2Y + 6;
-	} else {
-		paddle2Y = paddle2Y - 6;
+		paddle2Y = paddle2Y + paddle2deltaY;
+	} else if (paddle2YCenter > ballY - 35) {
+		paddle2Y = paddle2Y - paddle2deltaY;
 	}
 }
 
 function moveEverything() {
-  if(showWinScreen){
-    return
-  }
+	if (showWinScreen) {
+		return;
+	}
 	computerMovement();
 	ballX = ballX + ballSpeedX;
 	ballY = ballY + ballSpeedY;
@@ -78,16 +80,16 @@ function moveEverything() {
 }
 
 function drawEverything(canvas, canvasContext) {
-  if (showWinScreen) {
-    canvasContext.font = "20px Georgia";
-    canvasContext.fillStyle = 'white';
-    canvasContext.fillText("Click to Continue", 200, 200);
-    let winner = player1Score > player2Score ? '1' : '2';
-    canvasContext.fillText(`Congtatulations, player ${winner} win!`, 200, 400);
+	if (showWinScreen) {
+		canvasContext.font = "20px Georgia";
+		canvasContext.fillStyle = "white";
+		canvasContext.fillText("Click to Continue", 200, 200);
+		let winner = player1Score > player2Score ? "1" : "2";
+		canvasContext.fillText(`Congtatulations, player ${winner} win!`, 200, 400);
 
-    canvas.addEventListener('click', handleMouseClick)
-    return
-  }
+		canvas.addEventListener("click", handleMouseClick);
+		return;
+	}
 	colorRect(canvasContext, 0, 0, canvas.width, canvas.height, "black");
 
 	colorRect(canvasContext, 0, paddle1Y, PADDLE_THICKNESS, 100, "white");
@@ -129,20 +131,20 @@ function calculateMousePos({ clientX, clientY }) {
 function ballReset() {
 	if (player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE) {
 		player1Score = 0;
-    player2Score = 0;
-    showWinScreen = true;
+		player2Score = 0;
+		showWinScreen = true;
 	}
 	ballX = canvas.width / 2;
 	ballY = canvas.height / 2;
 	ballSpeedX = -ballSpeedX;
 }
 
-function handleMouseClick (evt){
-  if(showWinScreen){
-    player1Score = 0;
-    player2Score = 0;
-    showWinScreen = false;
-  }
-  canvas.removeEventListener('click',handleMouseClick)
+function handleMouseClick(evt) {
+	if (showWinScreen) {
+		player1Score = 0;
+		player2Score = 0;
+		showWinScreen = false;
+	}
+	canvas.removeEventListener("click", handleMouseClick);
 }
 document.addEventListener("DOMContentLoaded", main);
