@@ -32,8 +32,7 @@ function main() {
 
 function computerMovement() {
 	let paddle2YCenter = paddle2Y + PADDLE_HEIGHT / 2;
-	let paddle2deltaY =
-		Math.abs(ballSpeedY) > 6 ? 6 : Math.abs(ballSpeedY * 0.99);
+	let paddle2deltaY = Math.abs(ballSpeedY) > 8 ? 8 : Math.abs(ballSpeedY);
 	if (paddle2YCenter < ballY - 35) {
 		paddle2Y = paddle2Y + paddle2deltaY;
 	} else if (paddle2YCenter > ballY - 35) {
