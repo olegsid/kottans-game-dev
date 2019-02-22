@@ -1,0 +1,16 @@
+{
+	"name": "task1-phaser-tutorial",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "webpack --watch --mode development"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"phaser": "^3.16.2",
+		"webpack": "^4.29.5",
+		"webpack-cli": "^3.2.3"
+	}
+}
