@@ -2,16 +2,19 @@
 	"name": "task0-ping-pong",
 	"version": "1.0.0",
 	"description": "",
+	"main": "",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "webpack --watch"
 	},
 	"author": "o.shevchuk",
 	"license": "MIT",
-	"dependencies": {
-		"html-webpack-plugin": "^3.2.0",
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/core": "^7.3.3",
+		"@babel/preset-env": "^7.3.1",
+		"babel-loader": "^8.0.5",
 		"webpack": "^4.29.5",
-		"webpack-cli": "^3.2.3",
-		"webpack-dev-server": "^3.2.0"
+		"webpack-cli": "^3.2.3"
 	}
 }
